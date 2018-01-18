@@ -24,12 +24,15 @@ public interface ServiceApi {
     //注册
     @GET(URL_API.REGISTER_URL)
     Observable<RegisterBean> register(@Query("mobile") String mobile, @Query("password") String password);
+
     //首页列表
     @GET(URL_API.URL)
     Observable<ShowBean> showbean();
+
     //详情
     @GET(URL_API.XQ_URL)
     Observable<XqBean> xqbean(@Query("pid") String pid);
+
     //添加购物车
     @GET(URL_API.ADDCART)
     Observable<AddCartBean> getAddCart(@Query("uid") String uid, @Query("pid") String pid);

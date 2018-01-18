@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bwei.wsq.wsqusercenter.R;
 import com.bwei.wsq.wsqusercenter.presenter.RegisterPresenter;
@@ -47,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         ButterKnife.bind(this);
         initView();
         registerPresenter = new RegisterPresenter(this);
-        //EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
     }
 
     private void initView() {
@@ -64,23 +66,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public String mobile() {
-        return null;
+        return mEtMobile.getText().toString().trim();
     }
 
     @Override
     public String pwd() {
-        return null;
+        return mEtPassword.getText().toString().trim();
     }
 
     @Override
     public void showSuccess(String str) {
-
+        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showFailure(String str) {
-
+        Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void toLoginAc() {
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
+
     @OnClick({R.id.back, R.id.et_mobile, R.id.et_password, R.id.bt_register})
     public void onClick(View v) {
         switch (v.getId()) {
@@ -96,8 +105,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.bt_register:
                 registerPresenter.register();
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
+
                 break;
         }
     }
@@ -105,6 +113,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //EventBus.getDefault().unregister(this);
+        EventBus.getDefault().unregister(this);
     }
 }
+
+
+
+

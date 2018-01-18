@@ -44,8 +44,6 @@ public class CartActivity extends AppCompatActivity implements ICartView{
     private MyElvAdapter myElvAdapter;
     private CartPresenter cartPresenter;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +63,8 @@ public class CartActivity extends AppCompatActivity implements ICartView{
 
     @Override
     public void getCarts(CartBean cartBean) {
+        float price = 0;
+        int num = 0;
         List<CartBean.DataBean> dataBeans = cartBean.getData();
         lists = new ArrayList<>();
         for (int i = 0; i < dataBeans.size(); i++) {
@@ -79,10 +79,19 @@ public class CartActivity extends AppCompatActivity implements ICartView{
             //默认二级列表展开
             mElv.expandGroup(i);
         }
+
+        for (int i=0;i<lists.size();i++){
+            for (int j = 0; j <lists.get(i).size() ; j++) {
+                CartBean.DataBean.ListBean listBean = lists.get(i).get(j);
+                price+=listBean.getNum()*listBean.getPrice();
+                num+=listBean.getNum();
+            }
+        }
+        mTvNum.setText(num);
+        mTvPrice.setText(price+"");
         //取消小箭头
         mElv.setGroupIndicator(null);
     }
-
 
     private void initView() {
         mElv = (ExpandableListView) findViewById(R.id.elv);

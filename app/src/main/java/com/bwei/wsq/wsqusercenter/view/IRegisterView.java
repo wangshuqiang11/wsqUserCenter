@@ -12,4 +12,6 @@ public interface IRegisterView {
     public void showSuccess(String str);
 
     public void showFailure(String str);
+
+    public void toLoginAc();
 }

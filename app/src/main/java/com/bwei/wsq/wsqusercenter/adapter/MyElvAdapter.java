@@ -32,6 +32,7 @@ public class MyElvAdapter extends BaseExpandableListAdapter {
     private List<CartBean.DataBean> groupList;
     private List<List<CartBean.DataBean.ListBean>> childList;
     private LayoutInflater inflater;
+    private PriceAndCountEvent priceAndCountEvent;
 
     public MyElvAdapter(Context context, List<CartBean.DataBean> groupList, List<List<CartBean.DataBean.ListBean>> childList) {
         this.context = context;
@@ -120,7 +121,7 @@ public class MyElvAdapter extends BaseExpandableListAdapter {
             holder.cb_child = view.findViewById(R.id.cb_child);
             holder.del = view.findViewById(R.id.del);
             holder.sdv = view.findViewById(R.id.child_sdv);
-            //holder.adv_main = view.findViewById(R.id.adv_main);
+            holder.adv_main = view.findViewById(R.id.adv_main);
             holder.tv_info = view.findViewById(R.id.child_info);
             holder.tv_price = view.findViewById(R.id.child_price);
             holder.tv_tit = view.findViewById(R.id.child_tit);
@@ -159,7 +160,7 @@ public class MyElvAdapter extends BaseExpandableListAdapter {
             }
         });
         //自定义View加减号
-     /*   holder.adv_main.setOnAddDelClickListener(new AddDeleteView.OnAddDelClickListener() {
+        holder.adv_main.setOnAddDelClickListener(new AddDeleteView.OnAddDelClickListener() {
             @Override
             public void onAddClick(View v) {
                 //加号
@@ -186,7 +187,7 @@ public class MyElvAdapter extends BaseExpandableListAdapter {
                     EventBus.getDefault().post(computer());
                 }
             }
-        });*/
+        });
 
         holder.del.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -238,7 +239,7 @@ public class MyElvAdapter extends BaseExpandableListAdapter {
         TextView tv_tit;
         TextView tv_info;
         TextView tv_price;
-       // AddDeleteView adv_main;
+       AddDeleteView adv_main;
     }
 
     /**
@@ -345,7 +346,8 @@ public class MyElvAdapter extends BaseExpandableListAdapter {
                 }
             }
         }
-        PriceAndCountEvent priceAndCountEvent = new PriceAndCountEvent();
+        /*PriceAndCountEvent priceAndCountEvent = new PriceAndCountEvent();*/
+        priceAndCountEvent = new PriceAndCountEvent();
         priceAndCountEvent.setCount(count);
         priceAndCountEvent.setPrice(price);
         return priceAndCountEvent;

@@ -57,8 +57,7 @@
                 android:text="￥"
                 android:textColor="@color/colorAccent" />
 
-
-            <!--<com.bwei.wsq.wsqusercenter.view.AddDeleteView
+            <com.bwei.wsq.wsqusercenter.view.AddDeleteView
                 android:id="@+id/adv_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,8 +65,8 @@
                 android:layout_weight="1"
                 app:left_text="-"
                 app:middle_text="1"
-                app:right_text="+" />-->
+                app:right_text="+" >
+            </com.bwei.wsq.wsqusercenter.view.AddDeleteView>
         </RelativeLayout>
-
     </LinearLayout>
 </LinearLayout>

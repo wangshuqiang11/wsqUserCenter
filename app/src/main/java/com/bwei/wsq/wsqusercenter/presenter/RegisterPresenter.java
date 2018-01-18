@@ -26,6 +26,9 @@ public class RegisterPresenter {
             @Override
             public void onSuccess(RegisterBean registerBean) {
                 iRegisterView.showSuccess(registerBean.getMsg());
+                if(registerBean.getCode().equals("0")){
+                    iRegisterView.toLoginAc();
+                }
             }
 
             @Override

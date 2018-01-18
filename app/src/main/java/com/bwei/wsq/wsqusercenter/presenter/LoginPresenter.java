@@ -27,8 +27,8 @@ public class LoginPresenter {
             @Override
             public void onSuccess(LoginBean loginBean) {
                 iLoginView.showSuccess(loginBean.getMsg());
-                LoginBean.DataBean data = loginBean.getData();
-                data.getUid();
+               /* LoginBean.DataBean data = loginBean.getData();
+                data.getUid();*/
                 if (loginBean.getCode().equals("0")){
                     iLoginView.toRegisterAc();
                 }

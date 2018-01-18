@@ -52,7 +52,7 @@ public class CartBean {
         private String sellerName;
         private String sellerid;
         private List<ListBean> list;
-        private boolean isChecked;
+        private boolean isChecked=true;
 
         public boolean isChecked() {
             return isChecked;
@@ -115,7 +115,7 @@ public class CartBean {
             private int sellerid;
             private String subhead;
             private String title;
-            private boolean isChecked;
+            private boolean isChecked=true;
 
             public boolean isChecked() {
                 return isChecked;
